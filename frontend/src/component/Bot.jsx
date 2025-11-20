@@ -16,7 +16,7 @@ function Bot() {
         setLoading(true);
         if(!input.trim()) return;
         try {
-           const res=await axios.post("http://localhost:4002/bot/v1/message",{
+           const res=await axios.post("http://a1ae5430c9b6b4383be80f28812d2aa6-39275589.ap-south-1.elb.amazonaws.com:4002/bot/v1/message",{
                 text: input
             })
             if(res.status === 200) {

@@ -1,18 +1,24 @@
-# Use stable Debian-based Node (NOT Alpine)
+# Use stable Debian-based Node (not Alpine)
 FROM node:20-bullseye
 
-# Set working directory
+# Work directory
 WORKDIR /app
 
-# Install dependencies first (better caching)
+# Copy dependencies first (better cache)
 COPY package*.json ./
 RUN npm install
 
-# Copy the project files
+# Copy everything else
 COPY . .
 
-# Expose development port (Vite default: 5173)
+# Build production files
+RUN npm run build
+
+# Install a simple web server
+RUN npm install -g serve
+
+# Expose production port
 EXPOSE 5173
 
-# Start dev server
-CMD ["npm", "run", "dev" , "--" , "--host"]
+# Serve production build
+CMD ["serve", "-s", "dist", "-l", "5173"]
