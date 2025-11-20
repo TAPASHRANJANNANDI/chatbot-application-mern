@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-node-backend-deployment
+  labels:
+    app: chat-node-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: chat-node-backend
+  template:
+    metadata:
+      labels:
+        app: chat-node-backend
+    spec:
+        containers:
+        - name: chat-node-backend
+        image: tapashranjannandi/chat-node-backend:latest
+        env: 
+          - name: PORT
+            value: "4002"
+          - name: MONGODB_URI
+            value: "mongodb+srv://tapashbariflo_db_user:yuYD21YBP1bziUSx@cluster1.ynrsg2p.mongodb.net/chatApp?retryWrites=true&w=majority&appName=Cluster1"
+        ports:
+        - containerPort: 4002

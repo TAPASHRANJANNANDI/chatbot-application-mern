@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-node-frontend-deployment
+  labels:
+    app: chat-node-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: chat-node-frontend
+  template:
+    metadata:
+      labels:
+        app: chat-node-frontend
+    spec:
+        containers:
+        - name: chat-node-frontend
+        image: tapashranjannandi/chat-node-frontend:latest
+        ports:
+        - containerPort: 5173
