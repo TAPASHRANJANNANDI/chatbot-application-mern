@@ -16,6 +16,6 @@ spec:
     spec:
         containers:
         - name: chat-node-frontend
-        image: tapashranjannandi/chat-node-frontend:latest
-        ports:
-        - containerPort: 5173
+          image: tapashranjannandi/chat-node-frontend:latest
+          ports:
+          - containerPort: 5173
